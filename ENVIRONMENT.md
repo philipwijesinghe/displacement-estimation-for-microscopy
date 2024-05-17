@@ -1,6 +1,6 @@
 # Python Environment
 
-For convinience, environment files for a `conda`-based package manager (Anaconda/`miniconda`/`mamba`/etc.) are provided. To set up for inference with `conda`:
+For convinience, environment files for a `conda`-based package manager (Anaconda/miniconda/mamba/etc.) are provided. To set up for inference with `conda`:
 ```
 conda env create -f environment-inference.yml
 ```
