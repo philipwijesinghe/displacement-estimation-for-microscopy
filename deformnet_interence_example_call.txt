@@ -1,0 +1,1 @@
+python deformnet_inference.py "C:/example/models/example_model/saved_model/checkpoint.pt" "C:/example/inference/drosophila" --crop 1024

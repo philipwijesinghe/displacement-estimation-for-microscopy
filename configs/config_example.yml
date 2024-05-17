@@ -1,0 +1,25 @@
+# Test yml file
+
+run_name: 'example_model'
+group: 'example'
+
+model: 'UNet'
+loss: ['realEPE', 'SSIM_loss', 'LPIPS']
+use_rewarp: 1
+rewarp_weight: 100
+rewarp_loss: 'NPCC'
+
+epochs: 900
+batch_size: 8
+
+scheduler:
+  use: 0
+
+dirs:
+  data_root:
+    'D:\example\training\drosophila'
+
+transforms:
+  normalisation:
+    mean_disp: 0
+  noise: 0.0625
