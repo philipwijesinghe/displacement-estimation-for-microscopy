@@ -1,0 +1,11 @@
+name:
+  deformnet-inference
+channels:
+  - pytorch
+  - defaults
+dependencies:
+  - python=3.11
+  - pytorch
+  - torchvision
+  - scipy
+  - tqdm
