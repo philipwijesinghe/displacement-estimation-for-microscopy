@@ -1,13 +1,16 @@
 # Python Environment
 
-Using Miniconda or Anaconda (conda package and environment management).
+For convinience, environment files for a `conda`-based package manager (Anaconda/`miniconda`/`mamba`/etc.) are provided. To set up for inference with `conda`:
+```
+conda env create -f environment-inference.yml
+```
 
-Code was tested with:  
-- Windows 10
-- NVidia GTX 1080Ti (GPU)
-- PyTorch 2.2.1  
-- CUDA 12.1 (nvidia driver >=528.33)
-- Python 3.11
+To set up for training:
+```
+conda env create -f environment.yml
+```
+
+## Manual Installation
 
 Please follow the most up-to-date instructions for installing (PyTorch)[https://pytorch.org/get-started/locally/].
 
@@ -36,7 +39,7 @@ then
 should return ```true```
 
 
-## Packages required for inference only
+### Packages required for inference only
 
 Install the following packages by executing in cmd:  
 ```
@@ -48,7 +51,7 @@ scipy
 tqdm
 ```
 
-## Additional packages required for training
+### Additional packages required for training
 
 Packages:
 
@@ -62,4 +65,13 @@ as well as:
 ```
 pip3 install git+https://github.com/pvigier/perlin-numpy
 ```
+## Compatability
 
+Our training code currently only supports the CPU and CUDA PyTorch backends. 
+
+Code was tested with:  
+- Windows 10
+- NVidia GTX 1080Ti (GPU)
+- PyTorch 2.2.1  
+- CUDA 12.1 (nvidia driver >=528.33)
+- Python 3.11
