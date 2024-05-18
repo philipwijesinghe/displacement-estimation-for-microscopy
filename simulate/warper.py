@@ -4,7 +4,6 @@
 
 import numpy as np
 from scipy.interpolate import RectBivariateSpline
-from PIL import Image
 
 
 def deform(img_ref, ux, uy):

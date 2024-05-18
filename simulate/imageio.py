@@ -2,8 +2,8 @@
 """ Image IO functions
 """
 
-import os
 import glob
+import os
 
 # from skimage import io
 from PIL import Image

@@ -6,17 +6,19 @@ import os
 
 import numpy
 import numpy as np
-import simulate.imageio as io
 from PIL import Image
 
-from simulate.warper import deform, intensity_modulation
-from simulate.displacements.strainnet_speckle2 import (
-    sim_sequence_disp_field as sim_strainnet,
+import simulate.imageio as io
+from simulate.displacements.cloud_generator import (
+    sim_field,
 )
 from simulate.displacements.cloud_generator import (
     sim_sequence_disp_field as sim_perlin,
-    sim_field,
 )
+from simulate.displacements.strainnet_speckle2 import (
+    sim_sequence_disp_field as sim_strainnet,
+)
+from simulate.warper import deform, intensity_modulation
 
 
 def prepare_strainnet_v2(
