@@ -3,13 +3,12 @@
 """
 
 import os
+
+import matplotlib.pyplot as plt
+import numpy as np
 from PIL import Image
 
-import numpy as np
-
 import deeplearning.transforms as tf
-import matplotlib.pyplot as plt
-
 from helper.visualizer import save_disps_to_phasor, save_vectors
 
 # Run inference code first

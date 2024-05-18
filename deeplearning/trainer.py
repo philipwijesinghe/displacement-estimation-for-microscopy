@@ -148,10 +148,10 @@ class Trainer:
                 {"params": self.model.bias_parameters(), "weight_decay": 0},
                 {"params": self.model.weight_parameters(), "weight_decay": 4e-4},
             ]  # Are these needed?
-        except:
+        except AttributeError:
             param_groups = self.model.parameters()
 
-        print(f"Using optimizer Adam")
+        print("Using optimizer Adam")
         self.optimizer = torch.optim.Adam(
             params=param_groups,
             lr=self.config["lr"],
@@ -159,7 +159,7 @@ class Trainer:
         )
 
         # Initialise loss functions and metrics
-        if type(config["loss"]) is list:
+        if isinstance(config["loss"], list):
             print(f"Using combined loss functions {self.config['loss']}")
             loss_args = config["loss_args"] if config["loss_args"] else None
             loss_weights = config["loss_weights"] if config["loss_weights"] else None

@@ -1,6 +1,5 @@
-import torch.nn as nn
 import torch
-from torch.nn.utils import spectral_norm
+import torch.nn as nn
 
 
 def weights_init_normal(m):

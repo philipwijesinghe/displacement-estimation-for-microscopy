@@ -6,9 +6,9 @@ import os
 import shutil
 
 import numpy as np
-import simulate.imageio as io
 
-from simulate.simulator import prepare_strainnet_v2, prepare_perlin
+import simulate.imageio as io
+from simulate.simulator import prepare_perlin, prepare_strainnet_v2
 
 """ User Input:
 
