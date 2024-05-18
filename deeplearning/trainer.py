@@ -149,7 +149,7 @@ class Trainer:
         except:
             param_groups = self.model.parameters()
 
-        print(f"Using optimizer Adam")
+        print("Using optimizer Adam")
         self.optimizer = torch.optim.Adam(
             params=param_groups,
             lr=self.config["lr"],
