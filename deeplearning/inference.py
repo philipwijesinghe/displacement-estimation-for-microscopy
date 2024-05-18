@@ -5,16 +5,15 @@ We need two methods for inference - one is paired Ref/ Def/ images and one for s
 """
 
 import os
-import torch
 
 import numpy as np
+import torch
 from PIL import Image
+from torch.utils.data import DataLoader
 
+import deeplearning.config as config_handler
 import deeplearning.models as models
 import deeplearning.transforms as tf
-import deeplearning.config as config_handler
-
-from torch.utils.data import DataLoader
 from deeplearning.datasets import DisplacementDatasetUnsupervised
 
 
