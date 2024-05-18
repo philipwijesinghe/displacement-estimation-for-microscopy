@@ -6,9 +6,9 @@ Engineering 136 (2021): 106308.
 """
 
 import numpy as np
+
 # from scipy.interpolate import interp2d
 from scipy.interpolate import RectBivariateSpline as Interp  # faster for grid data
-from joblib import Parallel, delayed
 
 
 def sim_sequence_disp_field(subset_size=256, n_disps=60):

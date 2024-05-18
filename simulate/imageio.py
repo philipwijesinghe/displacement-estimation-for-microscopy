@@ -2,8 +2,8 @@
 """ Image IO functions
 """
 
-import os
 import glob
+import os
 
 # from skimage import io
 from PIL import Image
@@ -33,8 +33,10 @@ def crop(img, crop_size, random=True):
 
 
 class StackReader:
+    """ Class for reading images from a folder or list of folders in sequence
+    """
     def __init__(self, folder_path):
-        if type(folder_path) is list:
+        if isinstance(folder_path, list):
             self.files = []
             for folder_ in folder_path:
                 self.files += glob.glob(os.path.join(folder_, "*.png"))
