@@ -15,11 +15,15 @@ from torch.utils.tensorboard import SummaryWriter
 from torchvision.transforms import transforms
 from torchvision.utils import make_grid
 
+try:
+    import wandb
+    wandb_available = True
+except ImportError:
+    wandb_available = False
+
 import deeplearning.config as config_handler
 import deeplearning.models as models
 import deeplearning.transforms as tf
-
-# import wandb
 from deeplearning.datasets import DisplacementDataset
 from deeplearning.multiscaleloss import CombinedLoss, loss_function_dict
 from deeplearning.utils import AverageMeter, save_checkpoint
