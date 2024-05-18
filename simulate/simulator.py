@@ -180,7 +180,8 @@ def save_sample(out_paths, img_ref, img_def, ux, uy, n, dtype=None, out_mod_img=
 
 
 def add_noise(img, strength):
-    # add gaussian noise to a PIL image
+    """ Add gaussian noise to a PIL image
+    """
     img = np.array(img)
     noise = np.ones(img.shape) + np.random.normal(scale=strength, size=img.shape)
     img = np.clip(img * noise, 0, 255).astype(np.uint8)
