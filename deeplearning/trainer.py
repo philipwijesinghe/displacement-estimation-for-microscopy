@@ -40,7 +40,7 @@ class Trainer:
         self.config = config
         if torch.cuda.is_available():
             self.device = torch.device("cuda")
-        elif torch.mps.is_available():
+        elif torch.backends.mps.is_available():
             self.device = torch.device("mps")
         else:
             print("Warning: CUDA not available, using CPU")
