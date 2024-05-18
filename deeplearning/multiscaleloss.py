@@ -1,9 +1,8 @@
+from math import exp
+
 import numpy as np
 import torch
-import torch.nn as nn
 import torch.nn.functional as F
-
-from math import exp
 from torch.autograd import Variable
 from torchmetrics.image.lpip import LearnedPerceptualImagePatchSimilarity
 

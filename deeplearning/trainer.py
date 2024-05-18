@@ -5,23 +5,24 @@
 import os
 import time
 
+import torch
+from torch.backends import cudnn
+from torch.utils.data import DataLoader
+
+# from helper.visualizer import calc_disp_phasor
+# from tensorboardX import SummaryWriter
+from torch.utils.tensorboard import SummaryWriter
+from torchvision.transforms import transforms
+from torchvision.utils import make_grid
+
 import deeplearning.config as config_handler
 import deeplearning.models as models
 import deeplearning.transforms as tf
-import torch
 
 # import wandb
 from deeplearning.datasets import DisplacementDataset
 from deeplearning.multiscaleloss import CombinedLoss, loss_function_dict
 from deeplearning.utils import AverageMeter, save_checkpoint
-
-# from helper.visualizer import calc_disp_phasor
-# from tensorboardX import SummaryWriter
-from torch.utils.tensorboard import SummaryWriter
-from torch.backends import cudnn
-from torch.utils.data import DataLoader
-from torchvision.transforms import transforms
-from torchvision.utils import make_grid
 
 
 class Trainer:

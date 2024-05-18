@@ -15,10 +15,8 @@ OR
 
 """
 
-import os
 import deeplearning.config as config
 from deeplearning.trainer import Trainer
-
 
 """ USER CONFIG """
 # Load a config that contains static parameters for the whole experiment

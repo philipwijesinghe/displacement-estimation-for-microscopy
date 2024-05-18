@@ -2,11 +2,9 @@
 """ Transforms used by dataset/dataloader
 """
 
+import numpy as np
 import torch
 import torchvision.transforms.functional as tf
-
-import numpy as np
-
 from torchvision.transforms import transforms
 
 
