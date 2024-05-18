@@ -157,7 +157,7 @@ class Trainer:
         )
 
         # Initialise loss functions and metrics
-        if type(config["loss"]) is list:
+        if isinstance(config["loss"], list):
             print(f"Using combined loss functions {self.config['loss']}")
             loss_args = config["loss_args"] if config["loss_args"] else None
             loss_weights = config["loss_weights"] if config["loss_weights"] else None
