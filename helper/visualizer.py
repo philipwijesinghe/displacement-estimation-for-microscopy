@@ -2,19 +2,20 @@
 """ Visualizer helper functions
 """
 
-import os
 import glob
+import os
+
 import numpy as np
 import scipy
 
 # from skimage import io
 from PIL import Image
 from skimage import filters
-from torchvision.transforms import transforms
 
 
 def load_lut(lutpath):
     import csv
+
     from matplotlib.colors import ListedColormap
 
     if not os.path.exists(lutpath):
