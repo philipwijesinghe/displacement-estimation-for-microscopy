@@ -6,8 +6,9 @@ channels:
   - defaults
 dependencies:
   - python=3.11
-  - pytorch-cuda=12.1
+  - pytorch
   - torchvision
+  - pytorch-cuda=12.1
   - scipy
   - tqdm
   - joblib
