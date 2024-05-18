@@ -6,9 +6,15 @@ conda env create -f environment-inference.yml
 conda activate deformnet-inference
 ```
 
-To set up for training:
+To set up for training using the CUDA backend (NVIDIA GPU):
 ```
-conda env create -f environment.yml
+conda env create -f environment-training-cuda.yml
+conda activate deformnet
+```
+
+To set up for training using the MPS backend (Apple Silicon GPU):
+```
+conda env create -f environment-training-cuda.yml
 conda activate deformnet
 ```
 
