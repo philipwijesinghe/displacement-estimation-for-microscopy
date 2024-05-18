@@ -146,7 +146,7 @@ class Trainer:
                 {"params": self.model.bias_parameters(), "weight_decay": 0},
                 {"params": self.model.weight_parameters(), "weight_decay": 4e-4},
             ]  # Are these needed?
-        except:
+        except AttributeError:
             param_groups = self.model.parameters()
 
         print("Using optimizer Adam")
