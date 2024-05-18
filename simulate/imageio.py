@@ -33,6 +33,8 @@ def crop(img, crop_size, random=True):
 
 
 class StackReader:
+    """ Class for reading images from a folder or list of folders in sequence
+    """
     def __init__(self, folder_path):
         if isinstance(folder_path, list):
             self.files = []
