@@ -7,6 +7,8 @@ from scipy.interpolate import RectBivariateSpline
 
 
 def deform(img_ref, ux, uy):
+    """ Deform an image using the displacement field (ux, uy)
+    """
     # we assume that u is in pixel coordinates
     img_ref = np.asarray(img_ref)
     assert img_ref.shape == ux.shape
@@ -31,6 +33,8 @@ def deform(img_ref, ux, uy):
 
 
 def intensity_modulation(img_ref, img_modulation):
+    """ Apply intensity modulation to an image
+    """
     # img_modulation should be in the [0, 255] dynamic range
 
     img_def = img_ref + img_modulation
