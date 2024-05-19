@@ -20,7 +20,7 @@ from deeplearning.datasets import DisplacementDatasetUnsupervised
 class Inference:
     def __init__(self, model_path):
         self.device = torch.device(
-            "cuda" if torch.backends.cuda.is_available()
+            "cuda" if torch.cuda.is_available()
             else "mps" if torch.backends.mps.is_available()
             else "cpu"
         )
