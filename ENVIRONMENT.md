@@ -12,7 +12,7 @@ conda env create -f environment-training-cuda.yml
 conda activate deformnet
 ```
 
-To set up for training using the MPS backend (Apple Silicon GPU):
+To set up for training using the MPS backend (macOS):
 ```
 conda env create -f environment-training-cuda.yml
 conda activate deformnet
