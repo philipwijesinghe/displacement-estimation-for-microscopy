@@ -337,6 +337,11 @@ class LPIPS(torch.nn.Module):
 class RewarpLoss(torch.nn.Module):
     def __init__(self, img_size, device, loss="NPCC"):
         super().__init__()
+        
+        if device not in ["cuda", "cpu"]:
+            print("Warning: RewarpLoss not supported on this device. The CPU will be used instead for this loss.")
+            self.original_device = device
+            self.device = "cpu"
 
         self.img_size = img_size
 
@@ -345,14 +350,15 @@ class RewarpLoss(torch.nn.Module):
         uxf = gx.reshape((1, img_size, img_size, 1))
         uyf = gy.reshape((1, img_size, img_size, 1))
         flow_grid_0 = np.concatenate((uxf, uyf), axis=3)
-        self.flow_grid_0 = torch.from_numpy(flow_grid_0).float().to(device)
+        self.flow_grid_0 = torch.from_numpy(flow_grid_0).float().to(self.device)
 
         self.loss = loss_function_dict[loss]()
 
     def forward(self, output: torch.Tensor, input: torch.Tensor) -> torch.Tensor:
         # deform input ref to def
-        img_ref = input[:, 0:1, :, :]
-        img_def = input[:, 3:4, :, :]
+        img_ref = input[:, 0:1, :, :].to(self.device)
+        img_def = input[:, 3:4, :, :].to(self.device)
+        output = output.to(self.device)
 
         flow = self.flow_grid_0 - 2 * output.permute((0, 2, 3, 1)) / self.img_size
 
@@ -360,7 +366,7 @@ class RewarpLoss(torch.nn.Module):
             img_ref, flow, align_corners=True, padding_mode="border", mode="bicubic"
         )
 
-        return self.loss(result, img_def)
+        return self.loss(result, img_def).to(self.original_device)
 
 
 # def calc_rewarp_pcc_forward(img_ref, img_def, ux, uy):
