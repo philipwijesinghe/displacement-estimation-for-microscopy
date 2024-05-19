@@ -24,6 +24,7 @@ class Inference:
             else "mps" if torch.backends.mps.is_available()
             else "cpu"
         )
+        print(f"Using device: {self.device}")
 
         network_data = torch.load(model_path, map_location=self.device)
 
