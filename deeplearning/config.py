@@ -111,8 +111,8 @@ def load(path_to_yml, config=None):
         head = os.path.split(os.path.abspath(path_to_yml))
         config['dirs']['output'] = head[0]
 
-    config['dirs']['train'] = config['dirs']['data_root'] + r'\train'
-    config['dirs']['val'] = config['dirs']['data_root'] + r'\val'
+    config['dirs']['train'] = os.path.join(config['dirs']['output'], 'train')
+    config['dirs']['val'] = os.path.join(config['dirs']['output'], 'val')
     return config
 
 
