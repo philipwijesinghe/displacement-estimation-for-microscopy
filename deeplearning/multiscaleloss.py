@@ -342,6 +342,9 @@ class RewarpLoss(torch.nn.Module):
             print("Warning: RewarpLoss not supported on this device. The CPU will be used instead for this loss.")
             self.original_device = device
             self.device = "cpu"
+        else:
+            self.device = device
+            self.original_device = device
 
         self.img_size = img_size
 
