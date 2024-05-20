@@ -6,9 +6,15 @@ conda env create -f environment-inference.yml
 conda activate deformnet-inference
 ```
 
-To set up for training:
+To set up for training using the CUDA backend (NVIDIA GPU):
 ```
-conda env create -f environment.yml
+conda env create -f environment-training-cuda.yml
+conda activate deformnet
+```
+
+To set up for training using the MPS backend (macOS):
+```
+conda env create -f environment-training-cuda.yml
 conda activate deformnet
 ```
 
@@ -83,12 +89,9 @@ to your training config.
 
 ## Compatibility
 
-Our training code currently only supports the CPU and CUDA PyTorch backends. 
-
 Code was tested with:  
 - Windows 10
 - NVidia GTX 1080Ti (GPU)
 - PyTorch 2.2.1  
 - CUDA 12.1 (nvidia driver >=528.33)
 - Python 3.11
-

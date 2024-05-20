@@ -19,7 +19,12 @@ from deeplearning.datasets import DisplacementDatasetUnsupervised
 
 class Inference:
     def __init__(self, model_path):
-        self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        self.device = torch.device(
+            "cuda" if torch.cuda.is_available()
+            else "mps" if torch.backends.mps.is_available()
+            else "cpu"
+        )
+        print(f"Using device: {self.device}")
 
         network_data = torch.load(model_path, map_location=self.device)
 
