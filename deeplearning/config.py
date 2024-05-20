@@ -110,9 +110,13 @@ def load(path_to_yml, config=None):
     if not config['dirs']['output']:
         head = os.path.split(os.path.abspath(path_to_yml))
         config['dirs']['output'] = head[0]
-
-    config['dirs']['train'] = config['dirs']['data_root'] + r'\train'
-    config['dirs']['val'] = config['dirs']['data_root'] + r'\val'
+    if not config['dirs']['data_root']:
+        config['dirs']['data_root'] = config['dirs']['output']
+    if not config['dirs']['train']:
+        config['dirs']['train'] = os.path.join(config['dirs']['data_root'], 'train')
+    if not config['dirs']['val']:
+        config['dirs']['val'] = os.path.join(config['dirs']['data_root'], 'val')
+        
     return config
 
 
