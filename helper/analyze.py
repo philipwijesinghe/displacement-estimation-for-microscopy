@@ -3,14 +3,14 @@
 """
 from typing import Optional
 
-import torch
-import numpy as np
 import matplotlib.pyplot as plt
-from matplotlib.figure import Figure
+import numpy as np
 import scipy.stats as stats
+import torch
+from matplotlib.figure import Figure
 from scipy.ndimage import gaussian_filter
 
-from deeplearning.multiscaleloss import ssim, lpips_numpy, LPIPS
+from deeplearning.multiscaleloss import LPIPS, lpips_numpy, ssim
 from simulate.warper import deform
 
 

@@ -5,23 +5,24 @@
 import os
 import time
 
+import torch
+from torch.backends import cudnn
+from torch.utils.data import DataLoader
+
+# from helper.visualizer import calc_disp_phasor
+# from tensorboardX import SummaryWriter
+from torch.utils.tensorboard import SummaryWriter
+from torchvision.transforms import transforms
+from torchvision.utils import make_grid
+
 import deeplearning.config as config_handler
 import deeplearning.models as models
 import deeplearning.transforms as tf
-import torch
 
 # import wandb
 from deeplearning.datasets import DisplacementDataset
 from deeplearning.multiscaleloss import CombinedLoss, loss_function_dict
 from deeplearning.utils import AverageMeter, save_checkpoint
-
-# from helper.visualizer import calc_disp_phasor
-# from tensorboardX import SummaryWriter
-from torch.utils.tensorboard import SummaryWriter
-from torch.backends import cudnn
-from torch.utils.data import DataLoader
-from torchvision.transforms import transforms
-from torchvision.utils import make_grid
 
 
 class Trainer:
@@ -145,10 +146,10 @@ class Trainer:
                 {"params": self.model.bias_parameters(), "weight_decay": 0},
                 {"params": self.model.weight_parameters(), "weight_decay": 4e-4},
             ]  # Are these needed?
-        except:
+        except AttributeError:
             param_groups = self.model.parameters()
 
-        print(f"Using optimizer Adam")
+        print("Using optimizer Adam")
         self.optimizer = torch.optim.Adam(
             params=param_groups,
             lr=self.config["lr"],
@@ -156,7 +157,7 @@ class Trainer:
         )
 
         # Initialise loss functions and metrics
-        if type(config["loss"]) is list:
+        if isinstance(config["loss"], list):
             print(f"Using combined loss functions {self.config['loss']}")
             loss_args = config["loss_args"] if config["loss_args"] else None
             loss_weights = config["loss_weights"] if config["loss_weights"] else None
