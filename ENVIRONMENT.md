@@ -67,7 +67,8 @@ as well as:
 ```
 pip3 install git+https://github.com/pvigier/perlin-numpy
 ```
-## Compatability
+
+## Compatibility
 
 Our training code currently only supports the CPU and CUDA PyTorch backends. 
 
