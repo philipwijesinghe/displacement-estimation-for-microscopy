@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-""" Displacement simulation based on perlin noise cloud generation
+""" Displacement simulation based on cloud-like perlin noise generation
 """
 
 import numpy as np

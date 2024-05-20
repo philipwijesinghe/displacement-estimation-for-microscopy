@@ -3,6 +3,12 @@
 run_name: 'example_model'
 group: 'example'
 
+# optional wandb settings
+wandb:
+  enable: False
+  project: 'example_project'
+  entity: 'example_entity'
+
 model: 'UNet'
 loss: ['realEPE', 'SSIM_loss', 'LPIPS']
 use_rewarp: 1

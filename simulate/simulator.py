@@ -9,10 +9,10 @@ import numpy as np
 from PIL import Image
 
 import simulate.imageio as io
-from simulate.displacements.cloud_generator import (
+from simulate.displacements.perlin_generator import (
     sim_field,
 )
-from simulate.displacements.cloud_generator import (
+from simulate.displacements.perlin_generator import (
     sim_sequence_disp_field as sim_perlin,
 )
 from simulate.displacements.strainnet_speckle2 import (
