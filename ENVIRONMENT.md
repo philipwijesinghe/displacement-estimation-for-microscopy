@@ -68,6 +68,19 @@ as well as:
 pip3 install git+https://github.com/pvigier/perlin-numpy
 ```
 
+Optionally, Weights and Biases (`wandb`) may be used for cloud-based training run tracking. To enable it, install the required package with
+```
+conda install wandb
+```
+and add
+```
+wandb:
+  enable: True
+  project: 'your_project_name'
+  entity: 'your_entity_name'
+```
+to your training config.
+
 ## Compatibility
 
 Our training code currently only supports the CPU and CUDA PyTorch backends. 
@@ -78,3 +91,4 @@ Code was tested with:
 - PyTorch 2.2.1  
 - CUDA 12.1 (nvidia driver >=528.33)
 - Python 3.11
+

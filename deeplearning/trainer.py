@@ -15,11 +15,15 @@ from torch.utils.tensorboard import SummaryWriter
 from torchvision.transforms import transforms
 from torchvision.utils import make_grid
 
+try:
+    import wandb
+    wandb_available = True
+except ImportError:
+    wandb_available = False
+
 import deeplearning.config as config_handler
 import deeplearning.models as models
 import deeplearning.transforms as tf
-
-# import wandb
 from deeplearning.datasets import DisplacementDataset
 from deeplearning.multiscaleloss import CombinedLoss, loss_function_dict
 from deeplearning.utils import AverageMeter, save_checkpoint
@@ -59,14 +63,15 @@ class Trainer:
         self.writer = SummaryWriter(self.save_paths["log"])
 
         # wandb
-        # self.run = wandb.init(
-        #     project="displacement-learning",
-        #     name=self.config["run_name"],
-        #     group=self.config["group"],
-        #     entity="biophotonics-st-andrews",
-        #     config=self.config,
-        #     reinit=True,
-        # )
+        if wandb_available and self.config["wandb"]["enable"]:
+            self.run = wandb.init(
+                project=self.config["wandb"]["project"],
+                name=self.config["run_name"],
+                group=self.config["group"],
+                entity=self.config["wandb"]["entity"],
+                config=self.config,
+                reinit=True,
+            )
 
         # Save config dict for reference
         config_handler.save(
@@ -139,7 +144,8 @@ class Trainer:
         self.model = self.model.to(self.device)
 
         # watch
-        # wandb.watch(self.model)
+        if wandb_available and self.config["wandb"]["enable"]:
+            wandb.watch(self.model)
 
         try:
             param_groups = [
@@ -263,8 +269,8 @@ class Trainer:
 
         self.writer.add_image("val_image", img, epoch)
 
-        # images = wandb.Image(img)
-        # wandb.log({"examples": images, "epoch": epoch})
+        if wandb_available and self.config["wandb"]["enable"]:
+            wandb.log({"val_image": [wandb.Image(img)], "epoch": epoch})
 
     def _load_batch(self, batch):
         target_ux = batch["Dispx"].to(self.device)
@@ -351,7 +357,8 @@ class Trainer:
             metric_loss.update(loss.item(), target.size(0))
             metric_loss_epe.update(loss_epe.item(), target.size(0))
             self.writer.add_scalar("train/train_loss", loss.item(), self.n_iter)
-            # wandb.log({"train/train_loss": loss.item(), "epoch": epoch, "batch": self.n_iter})
+            if wandb_available and self.config["wandb"]["enable"]:
+                wandb.log({"train/train_loss": loss.item(), "epoch": epoch, "batch": self.n_iter})
             self.n_iter += 1
 
             batch_time.update(time.time() - time_last)
@@ -370,8 +377,9 @@ class Trainer:
                 )
 
         self.writer.add_scalar("train/mean_EPE", metric_loss_epe.avg, epoch)
-        # wandb.log({"train/train_loss": metric_loss.avg, "epoch": epoch})
-        # wandb.log({"train/mean_EPE": metric_loss_epe.avg, "epoch": epoch})
+        if wandb_available and self.config["wandb"]["enable"]:
+            wandb.log({"train/train_loss": metric_loss.avg, "epoch": epoch})
+            wandb.log({"train/mean_EPE": metric_loss_epe.avg, "epoch": epoch})
         return metric_loss.avg, metric_loss_epe.avg
 
     def _validate_epoch(self, epoch):
@@ -410,9 +418,10 @@ class Trainer:
         self.writer.add_scalar("val/mean_EPE", metric_loss_epe.avg, epoch)
         self.writer.add_scalar("val/mean_SSIM", metric_ssim.avg, epoch)
         self.writer.add_scalar("val/mean_LPIPS", metric_lpips.avg, epoch)
-        # wandb.log({"val/mean_EPE": metric_loss_epe.avg, "epoch": epoch})
-        # wandb.log({"val/mean_SSIM": metric_ssim.avg, "epoch": epoch})
-        # wandb.log({"val/mean_LPIPS": metric_lpips.avg, "epoch": epoch})
+        if wandb_available and self.config["wandb"]["enable"]:
+            wandb.log({"val/mean_EPE": metric_loss_epe.avg, "epoch": epoch})
+            wandb.log({"val/mean_SSIM": metric_ssim.avg, "epoch": epoch})
+            wandb.log({"val/mean_LPIPS": metric_lpips.avg, "epoch": epoch})
         # if self.config["use_rewarp"]:
         self.writer.add_scalar("val/mean_Rewarp", metric_rewarp.avg, epoch)
         # wandb.log({"val/mean_Rewarp": metric_rewarp.avg, "epoch": epoch})
