@@ -15,24 +15,24 @@ The inference folder shows how to organise real video data, and process it to di
 
 ```
 ./example/drosophila/Ref
-					/Def
-		 /training/drosophila/training/Ref/
-		 							  /Def/
-		 							  /Dispx/
-		 							  /Dispy/
-		 							  /IntMod/
-		 							  /...
-		 					 /testing/ "
-		 					 /validation/ "
-		 /models/example_model/saved_models/checkpoint.pth
-		 					  /config.yml
-		 					  /...
-		 		/example_model_untrained/config.yml
-		 /inference/drosophila/Ref
-		 					  /Def
-		 					  /Dispx-inference
-		 					  /Dispy-inference
-		 					  /...
+		    /Def
+	 /training/drosophila/training/Ref/
+				      /Def/
+				      /Dispx/
+				      /Dispy/
+				      /IntMod/
+				      /...
+			     /testing/ "
+			     /validation/ "
+	  /models/example_model/saved_models/checkpoint.pth
+					    /config.yml
+				            /...
+                 /example_model_untrained/config.yml
+	  /inference/drosophila/Ref
+		 	       /Def
+		 	       /Dispx-inference
+		 	       /Dispy-inference
+		 	       /...
 ```
 
 
