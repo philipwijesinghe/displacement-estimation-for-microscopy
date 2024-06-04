@@ -12,7 +12,7 @@ The estimation of full-field displacement between biological image frames or in 
 However, the often weak signals, poor biological contrast and many noise processes typical to microscopy make this a formidable challenge for many contemporary methods.
 Here, we present a deep-learning method, termed Displacement Estimation FOR Microscopy (DEFORM-Net), that outperforms traditional digital image correlation and optical flow methods, as well as recent learned approaches, offering simultaneous high accuracy, spatial sampling and speed.
 DEFORM-Net is experimentally unsupervised, relying on displacement simulation based on a random fractal Perlin-noise process and optimised training loss functions, without the need for experimental ground truth.
-We demonstrate its performance on real biological videos of beating neonatal mouse cardiomyocytes and pulsed contractions in \textit{Drosophila} pupae, and in various microscopy modalities.
+We demonstrate its performance on real biological videos of beating neonatal mouse cardiomyocytes and pulsed contractions in _Drosophila_ pupae, and in various microscopy modalities.
 We provide DEFORM-Net as open source, including inference in the ImageJ/FIJI platform, for rapid evaluation, which will empower new quantitative applications in biology and medicine.
 
 
