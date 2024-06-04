@@ -15,6 +15,9 @@ DEFORM-Net is experimentally unsupervised, relying on displacement simulation ba
 We demonstrate its performance on real biological videos of beating neonatal mouse cardiomyocytes and pulsed contractions in _Drosophila_ pupae, and in various microscopy modalities.
 We provide DEFORM-Net as open source, including inference in the ImageJ/FIJI platform, for rapid evaluation, which will empower new quantitative applications in biology and medicine.
 
+<p align="center">
+<img src="figure1_snapshot.jpg" alt="fig1" width="700"/>
+</p>
 
 ## Description
 
