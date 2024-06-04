@@ -4,7 +4,7 @@
 
 **Estimating full-field displacement in biological images using deep learning**   
 *Solomon J. E. T. Warsop, Soraya Caixeiro, Marcus Bischoff, Jochen Kursawe, Graham D. Bruce, and Philip Wijesinghe*  
-(Submitted) 2024 (BIORXIV/2024/595161) doi:TBC
+2024 (BIORXIV/595161) [https://doi.org/10.1101/2024.05.21.595161](https://doi.org/10.1101/2024.05.21.595161)
 
 ## Abstract
 
@@ -24,7 +24,7 @@ The associated data, compiled code and trained models can be found in our instit
 
 The example scripts in the root directory rely on the minimal example data provided in the above link placed in the ```C:/example/``` directory.
 
-Please refer to the Supplementary Information for Software Documentation.
+Please refer to the [Supplementary Information](https://www.biorxiv.org/content/10.1101/2024.05.21.595161v1.supplementary-material) for Software Documentation.
 
 
 ## Code listing
