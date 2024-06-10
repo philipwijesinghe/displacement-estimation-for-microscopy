@@ -32,13 +32,17 @@ Please refer to the [Supplementary Information](https://www.biorxiv.org/content/
 
 ## Usage
 
+### ImageJ/FIJI
+
 DEFORM-Net can be run using FIJI/ImageJ using [deepImageJ](https://deepimagej.github.io/) and our pre-trained [torchscript models](https://doi.org/10.17630/feab7fa3-d77b-46e8-a487-7b47c760996a).
 The ```ImageJ_Stack_Macro.ijm``` macro can be used to run deformnet on a stack/image sequence/video.
 The outputs will be the x and y components of the displacement field as separate image stacks.
 
+### Command-line tools
+
 DEFORM-Net can be run programmatically using python (or the compiled binaries) using ```deformnet_inference.py```:
 
-```deformnet_inference.exe "path_to_model" "path_to_data"```
+```python deformnet_inference.py "path_to_model" "path_to_data"```
 
 with optional arguments: 
 
@@ -48,6 +52,12 @@ with optional arguments:
 -- overwrite OVERWRITE     overwrite output if it exists
 -- save_fmt SAVE_FMT       save format : 'npy', 'tiff', or 'both'
 ```
+
+### Training
+
+New models may be trained using the modules in this repository.
+Please see the [Supplementary Information](https://www.biorxiv.org/content/10.1101/2024.05.21.595161v1.supplementary-material) for more detailed documentation.
+
 
 ## Code listing
 
