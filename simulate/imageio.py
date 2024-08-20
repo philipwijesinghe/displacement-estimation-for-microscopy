@@ -6,12 +6,12 @@ import glob
 import os
 
 # from skimage import io
-from PIL import Image
+from PIL import Image, ImageOps
 from torchvision.transforms import transforms
 
 
 def read(img_path):
-    img = Image.open(img_path)
+    img = ImageOps.exif_transpose(Image.open(img_path))
     # TODO: format standardisation
     return img
 

@@ -6,7 +6,7 @@ import os
 
 import matplotlib.pyplot as plt
 import numpy as np
-from PIL import Image
+from PIL import Image, ImageOps
 
 import deeplearning.transforms as tf
 from helper.visualizer import save_disps_to_phasor, save_vectors
@@ -38,7 +38,7 @@ bg_remove = 0
 # Use mask?
 mask_path = os.path.join(gt_path, "mask.png")
 if os.path.exists(mask_path):
-    mask = Image.open(mask_path)
+    mask = ImageOps.exif_transpose(Image.open(mask_path))
     mask = np.asarray(mask).astype("uint8")
     mask[mask > 1] = 1
 else:

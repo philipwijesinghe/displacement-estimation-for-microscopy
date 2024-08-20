@@ -9,7 +9,7 @@ import numpy as np
 import scipy
 
 # from skimage import io
-from PIL import Image
+from PIL import Image, ImageOps
 from skimage import filters
 
 
@@ -212,7 +212,7 @@ def save_vectors(
         print("Saving {0} of {1} images".format(i, len(files_x)))
         ux = np.load(files_x[i])
         uy = np.load(files_y[i])
-        img_ref = np.asarray(Image.open(files_ref[i]))
+        img_ref = np.asarray(ImageOps.exif_transpose(Image.open(files_ref[i])))
 
         crop_x = (img_ref.shape[1] - ux.shape[1]) // 2
         crop_y = (img_ref.shape[0] - ux.shape[0]) // 2
