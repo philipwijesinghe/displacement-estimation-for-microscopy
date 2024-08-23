@@ -8,6 +8,25 @@ import torchvision.transforms.functional as tf
 from torchvision.transforms import transforms
 
 
+class GaussianBlur(torch.nn.Module):
+    def __init__(self, sigma):
+        super().__init__()
+        self.sigma = sigma
+        if sigma:
+            kernel_size = ((6 * sigma) // 2) * 2 + 1
+            self.F = transforms.GaussianBlur(kernel_size, sigma)
+
+    def forward(self, sample):
+        if self.sigma:
+            if "Ref" in sample:
+                img_ref = sample["Ref"]
+                sample["Ref"] = self.F(img_ref)
+            if "Def" in sample:
+                img_def = sample["Def"]
+                sample["Def"] = self.F(img_def)
+        return sample
+
+
 class AddGaussNoise(torch.nn.Module):
     def __init__(self, noise_std_pc=0.05):
         super().__init__()

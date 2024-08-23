@@ -86,23 +86,27 @@ class Trainer:
         # - TODO: Optional: Prepare transforms based on config
         self.transforms_train = [
             tf.Normalization(**config["transforms"]["normalisation"]),
+            tf.GaussianBlur(sigma=self.config['transforms']['blur_sigma']),
             tf.SimultaneousCrop(img_size=self.config["img_size"]),
             tf.SimultaneousDiscreteRotate(),
-            # tf.AddGaussNoise(noise_std_pc=self.config['transforms']['noise'])
+            tf.AddGaussNoise(noise_std_pc=self.config['transforms']['noise_gauss']),
             tf.AddPoissonNoise(noise_std_pc=self.config["transforms"]["noise"]),
         ]
         self.transforms_val = [
             tf.Normalization(**config["transforms"]["normalisation"]),
+            tf.GaussianBlur(sigma=self.config['transforms']['blur_sigma']),
             tf.SimultaneousCrop(img_size=self.config["img_size"]),
-            # tf.AddGaussNoise(noise_std_pc=self.config['transforms']['noise'])
+            tf.AddGaussNoise(noise_std_pc=self.config['transforms']['noise_gauss']),
             tf.AddPoissonNoise(noise_std_pc=self.config["transforms"]["noise"]),
         ]
         self.transforms_val_image = [
             tf.Normalization(**config["transforms"]["normalisation"]),
+            tf.GaussianBlur(sigma=self.config['transforms']['blur_sigma']),
             tf.SimultaneousCenterCrop(img_size=self.config["img_size"]),
-            # tf.AddGaussNoise(noise_std_pc=self.config['transforms']['noise'])
+            tf.AddGaussNoise(noise_std_pc=self.config['transforms']['noise_gauss']),
             tf.AddPoissonNoise(noise_std_pc=self.config["transforms"]["noise"]),
         ]
+
 
         # - TODO: Optional: Needs assertion that data exists
         print(f"Using training data from {self.config['dirs']['train']}")

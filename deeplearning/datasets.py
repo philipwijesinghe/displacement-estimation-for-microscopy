@@ -123,7 +123,9 @@ class DisplacementDatasetUnsupervised(Dataset):
             self._preload_data()
 
     def _get_file_list(self, subfolder):
-        return sorted(glob.glob(os.path.join(self.dataroot, subfolder, "*.*")))
+        files_include = glob.glob(os.path.join(self.dataroot, subfolder, "*.*"))
+        files_exclude = glob.glob(os.path.join(self.dataroot, subfolder, "*.db"))
+        return sorted(set(files_include) - set(files_exclude))
 
     def _load_single(self, index):
         # noinspection PyTypeChecker

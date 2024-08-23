@@ -38,6 +38,8 @@ _default_config = {
         'normalisation': {  # add kwargs to pass to function if needed
         },
         'noise': 0,
+        'noise_gauss': 0,
+        'blur_sigma': 0,
         'train': [
             'SimultaneousCrop'
         ],
@@ -51,7 +53,12 @@ _default_config = {
         'gamma': 0.5
     },
     'update_period': 100,
-    'save_period': 100
+    'save_period': 100,
+    'wandb': {
+        'enable': False,
+        'project': 'example_project',
+        'entity': 'example_entity',
+    }
 }
 
 
