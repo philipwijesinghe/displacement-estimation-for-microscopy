@@ -7,7 +7,7 @@ import os
 
 import numpy as np
 import torchvision.transforms as transforms
-from PIL import Image
+from PIL import Image, ImageOps
 from torch.utils.data import Dataset
 from tqdm import tqdm
 
@@ -51,9 +51,9 @@ class DisplacementDataset(Dataset):
 
     def _load_single(self, index):
         # noinspection PyTypeChecker
-        img_ref = np.asarray(Image.open(self.files_ref[index]))
+        img_ref = np.asarray(ImageOps.exif_transpose(Image.open(self.files_ref[index])))
         # noinspection PyTypeChecker
-        img_def = np.asarray(Image.open(self.files_def[index]))
+        img_def = np.asarray(ImageOps.exif_transpose(Image.open(self.files_def[index])))
         img_ux = np.load(self.files_ux[index])
         img_uy = np.load(self.files_uy[index])
         return img_ref, img_def, img_ux, img_uy
@@ -127,9 +127,9 @@ class DisplacementDatasetUnsupervised(Dataset):
 
     def _load_single(self, index):
         # noinspection PyTypeChecker
-        img_ref = np.asarray(Image.open(self.files_ref[index]))
+        img_ref = np.asarray(ImageOps.exif_transpose(Image.open(self.files_ref[index])))
         # noinspection PyTypeChecker
-        img_def = np.asarray(Image.open(self.files_def[index]))
+        img_def = np.asarray(ImageOps.exif_transpose(Image.open(self.files_def[index])))
         return img_ref, img_def
 
     def _preload_data(self):
