@@ -231,6 +231,9 @@ def save_vectors(
             img_ref = img_ref - bg
 
         fig = plt.figure(figsize=(ux.shape[1] / dpi, ux.shape[0] / dpi), dpi=dpi)
+        ax = plt.Axes(fig, [0., 0., 1., 1.])
+        ax.set_axis_off()
+        fig.add_axes(ax)
         # plt.quiver(
         #     Y[skip],
         #     X[skip],
@@ -242,7 +245,7 @@ def save_vectors(
         #     scale=scale,
         #     color=(1, 0, 0),
         # )
-        plt.quiver(
+        ax.quiver(
             X[skip] + crop_x,
             Y[skip] + crop_y,
             ux[skip],
@@ -253,7 +256,7 @@ def save_vectors(
             scale=scale,
             color=(1, 0, 0),
         )
-        plt.imshow(img_ref, cmap="gray")
+        ax.imshow(img_ref, cmap="gray")
         plt.savefig(os.path.join(out_path, "%08i.tiff" % int(i)), dpi=dpi)
         plt.close(fig)
 
