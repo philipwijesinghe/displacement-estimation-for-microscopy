@@ -29,3 +29,5 @@ transforms:
   normalisation:
     mean_disp: 0
   noise: 0.0625
+  noise_gauss: 0.02
+  blur_sigma: 1
